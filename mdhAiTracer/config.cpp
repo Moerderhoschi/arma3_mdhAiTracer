@@ -4,7 +4,7 @@ class CfgPatches
 	{
 		author = "Moerderhoschi";
 		name = "MDH AI Tracer";
-		url = "http://moerderhoschi.bplaced.net";
+		url = "https://steamcommunity.com/sharedfiles/filedetails/?id=3437872589";
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 1.0;
@@ -41,6 +41,6 @@ class CfgMods
 		hidePicture = "true";
 		hideName = "true";
 		actionName = "Website";
-		action = "http://moerderhoschi.bplaced.net";
+		action = "https://steamcommunity.com/sharedfiles/filedetails/?id=3437872589";
 	};
 };
