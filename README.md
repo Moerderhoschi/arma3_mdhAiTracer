@@ -1,4 +1,4 @@
- ![Alt text](https://images.steamusercontent.com/ugc/32192049038094026/5E6E03D4ED03315DC4F656D2859DE1AA49D5C3E5/)
+ ![Alt text](https://images.steamusercontent.com/ugc/32193398118992605/E61B99C6B2380E0083757A847F5D79720D944C9F/)
 
 MDH AI Tracer is a mod, created by Moerderhoschi for Arma 3.
 
