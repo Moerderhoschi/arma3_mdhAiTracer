@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////////////////////
-// MDH AI TRACER(by Moerderhoschi) - v2025-03-16
+// MDH AI TRACER(by Moerderhoschi) - v2025-05-09
 // github: https://github.com/Moerderhoschi/arma3_mdhAiTracer
 // steam mod version: https://steamcommunity.com/sharedfiles/filedetails/?id=3437872589
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -71,11 +71,31 @@ if (missionNameSpace getVariable ["pReplaceAiMagsWithTracer",99] == 99) then
 						{
 							_x setVariable ["mdhReplaceAiMagsWithTracerSet",true];
 							_u = _x;
+							_t = "red";
+							if (side group _u == east) then {_t = "green"};
+							if (side group _u == resistance) then {_t = "yellow"};
+							_countO = getNumber(configFile >> "CfgMagazines" >> (currentMagazine _u) >> "count");
 							_tracerMags = [];
 							{
-								if ("tracer" in (toLowerANSI(_x))) then {_tracerMags pushBack _x};
+								_countN = getNumber(configFile >> "CfgMagazines" >> _x >> "count");
+								if ("tracer" in (toLowerANSI(_x)) && {_countN >= _countO} && {_t in (toLowerANSI(_x))}) then {_tracerMags pushBack _x};
 							} forEach compatibleMagazines [currentWeapon _u, "this"];
-				
+
+							if (count _tracerMags == 0) then
+							{
+								{
+									_countN = getNumber(configFile >> "CfgMagazines" >> _x >> "count");
+									if ("tracer" in (toLowerANSI(_x)) && {_countN >= _countO}) then {_tracerMags pushBack _x};
+								} forEach compatibleMagazines [currentWeapon _u, "this"];
+							};
+
+							if (count _tracerMags == 0) then
+							{
+								{
+									if ("tracer" in (toLowerANSI(_x))) then {_tracerMags pushBack _x};
+								} forEach compatibleMagazines [currentWeapon _u, "this"];
+							};
+
 							if (count _tracerMags != 0) then
 							{
 								{_u removeMagazines _x} forEach compatibleMagazines [currentWeapon _u, "this"];
